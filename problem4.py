@@ -23,5 +23,3 @@ for i in range(999,100,-1):
         if(is_palindrome(i*j) and i*j > largest):
             largest = i*j
             print(largest)
-            
-        
