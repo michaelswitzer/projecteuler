@@ -9,8 +9,6 @@
 
 # Fibonacci pattern is (starting from 2) even odd odd even...
 
-# I don't really want to generate a huge list of big nums
-
 total = 0
 counter = 0 #counts number of steps to predict even numbers
 

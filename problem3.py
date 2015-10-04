@@ -2,7 +2,7 @@
 # 
 # What is the largest prime factor of the number 600851475143 ?
 
-num = 600851475143
+import math
 
 #naive primality test from wikipedia
 def is_prime(n):
@@ -20,13 +20,15 @@ def is_prime(n):
     return True
 
 
-def largest_prime_factor(n):
-    for x in range(1,n): #assumes odd
+def prime_factorize(n):
+    prime_factors = []
+    for x in range(1,int(math.sqrt(n))):
         if (n % x == 0 and is_prime(x)):
-            print("prime factor: " + x)
+            prime_factors.append(x)
             x = 1
             n = n / x
-    return n
+    return prime_factors
             
-            
-print(largest_prime_factor(num))
+# solve problem
+num = 600851475143 
+print(prime_factorize(num))
