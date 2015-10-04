@@ -7,7 +7,7 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-# Fibonacci pattern is (starting from 2) even odd odd even...
+# MIKENOTE: Fibonacci pattern is (starting from 2) even odd odd even odd odd...
 
 total = 0
 counter = 0 #counts number of steps to predict even numbers
