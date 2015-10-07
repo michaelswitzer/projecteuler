@@ -20,16 +20,16 @@
 # What is the index of the first term in the Fibonacci sequence to contain
 # 1000 digits?
 
-from math import sqrt, log10
+from math import sqrt, log10, floor
    
 # http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibFormula.html#logs 
 phi = (1 + 5 ** 0.5) / 2
 
 # number of digits in fib number n
 def fib_digits(n):
-    return n*log10(phi) - log10(5) / 2    
-
+    return 1 + floor(n*log10(phi) - log10(5) / 2)
+    
 index = 1
-while round(fib_digits(index)) < 1001:
+while round(fib_digits(index)) < 1000:
     index = index + 1
 print fib_digits(index), index
