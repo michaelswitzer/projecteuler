@@ -14,7 +14,7 @@
 import fractions
 
 # tell if fraction is curious
-# only supports 2 digits
+# only supports 2 digits in num, den
 def curious(n,d):
     # individual digits in num and den
     n = float(n)
@@ -24,7 +24,7 @@ def curious(n,d):
     d_d1 = float(str(d)[0])
     d_d2 = float(str(d)[1])
     try:
-        if ((n / d == n_d1 / d_d2 and n_d2 == d_d1) or (n / d == n_d2 / d_d1 and n_d1 == d_d2)) and n_d1 != n_d2 and n / d < 1:
+        if ((n/d == n_d1/d_d2 and n_d2==d_d1) or (n/d == n_d2/d_d1 and n_d1 == d_d2)) and n_d1 != n_d2 and n/d < 1:
             return True
     except ZeroDivisionError:
         pass
