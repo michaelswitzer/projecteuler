@@ -19,7 +19,7 @@ def letter_value(s):
 
 def word_value(s):
     value = 0
-    for letter in list(s):
+    for letter in s:
         value += letter_value(letter)
     return value
     
