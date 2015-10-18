@@ -31,15 +31,7 @@ def is_prime(n):
             return False
         i = i + 6
     return True
-    
-def prime_factors(n):
-    prime_factors = []
-    for x in range(1,int(math.sqrt(n))):
-        if (n % x == 0 and is_prime(x)):
-            prime_factors.append(x)
-            x = 1
-            n = n / x
-    return prime_factors
+
     
 # http://stackoverflow.com/questions/15347174/python-finding-prime-factors
 def prime_expansion(n):
@@ -54,6 +46,9 @@ def prime_expansion(n):
     if n > 1:
         factors.append(n)
     return factors
+    
+def prime_factors(n):
+    return list(set(prime_expansion(n)))
     
 
 ### PALINDROMES ###

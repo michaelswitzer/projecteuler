@@ -9,7 +9,6 @@
 
 from common_funcs import answer, triangle, pentagonal, hexagonal
 
-# takes 384 seconds
 def solve():
     a = 286
     while True:
