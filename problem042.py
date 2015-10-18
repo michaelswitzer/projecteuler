@@ -12,7 +12,7 @@
 # file containing nearly two-thousand common English words, how many are
 # triangle words?
 
-from common_funcs import answer
+from common_funcs import answer, triangle
 from data_sets import problem042_data
 
 words = problem042_data()
@@ -26,14 +26,14 @@ def word_value(s):
         value += letter_value(letter)
     return value
     
-def is_triangle_word(s): # inefficient but i know i can brute force this
+def is_triangle_word(s): # inefficient
     value = word_value(s)
-    triangle_num = 1
+    tri_num = 1
     n = 0
-    while triangle_num <= value:
+    while tri_num <= value:
         n += 1
-        triangle_num = n * (n + 1) / 2
-        if value == triangle_num:
+        tri_num = triangle(n)
+        if value == tri_num:
             return True
     return False
    

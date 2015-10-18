@@ -21,14 +21,14 @@
 
 import math
 
-from common_funcs import answer, div_gen, tri_num
+from common_funcs import answer, div_gen, triangle
  
 def solve():
     n = 1
     max = 500
 
     while(True):
-        t = tri_num(n)
+        t = triangle(n)
         num_divisors = len(list(div_gen(t)))
     
         if num_divisors > max:
