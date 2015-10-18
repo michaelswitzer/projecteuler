@@ -69,10 +69,54 @@ def is_palindrome(n):
     
 ### TRIANGLE NUMS ###
  
-def tri_num(n):
-    Tn = (n * (n + 1)) / 2
-    return Tn
+def triangle(n):
+    return (n * (n + 1)) / 2
+    
+def triangular(n):
+    counter = 1
+    while True:
+        pent = pentagon(counter)
+        if pent == n:
+            return True
+            break
+        if pent > n:
+            return False 
+            break
+        counter += 1
 
+### PENTAGON NUMS ###
+
+def pentagon(n):
+    return n*(3*n-1)/2
+    
+def pentagonal(n):
+    counter = 1
+    while True:
+        pent = pentagon(counter)
+        if pent == n:
+            return True
+            break
+        if pent > n:
+            return False 
+            break
+        counter += 1
+
+### HEXAGON NUMS ###
+
+def hexagon(n):
+    return n*(2*n-1)
+    
+def hexagonal(n):
+    counter = 1
+    while True:
+        pent = hexagon(counter)
+        if pent == n:
+            return True
+            break
+        if pent > n:
+            return False 
+            break
+        counter += 1
 
 ### DIVISORS ###
 
