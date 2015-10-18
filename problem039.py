@@ -7,15 +7,20 @@
 
 import math
 
-most_solutions = 0
+from common_funcs import answer
 
-for p in range(1,1001):
-    solutions = []
-    for a in range(3,p):
-        for b in range(a+1,p):
-            if math.sqrt(a**2 + b**2) == float(p - a - b):
-                solutions.append([a,b,p-a-b])
-    if len(solutions) > most_solutions:
-        most_solutions = len(solutions)
+def solve():
+    most_solutions = 0
+
+    for p in range(1,1001):
+        solutions = []
+        for a in range(3,p):
+            for b in range(a+1,p):
+                if math.sqrt(a**2 + b**2) == float(p - a - b):
+                    solutions.append([a,b,p-a-b])
+        if len(solutions) > most_solutions:
+            most_solutions = len(solutions)
+            best_p = p
+    return best_p
         
-print most_solutions
+answer(solve)

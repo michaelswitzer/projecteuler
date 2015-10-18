@@ -6,17 +6,26 @@
 # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 
 import math
+import time
 
-guess = 3
+from common_funcs import answer
 
-answer_sum = 0
+def solve():
+    begin_time = time.time()
 
-while True: # terrible
-    digits = [int(x) for x in list(str(guess))]
-    sum = 0
-    for x in digits:
-        sum += math.factorial(x)
-    if guess == sum:
-        answer_sum += guess
-        print(answer_sum)
-    guess+= 1
+    guess = 3
+
+    answer_sum = 0
+
+    while time.time() - begin_time < 1: #laaazy
+        digits = [int(x) for x in list(str(guess))]
+        sum = 0
+        for x in digits:
+            sum += math.factorial(x)
+        if guess == sum:
+            answer_sum += guess
+        guess+= 1
+    
+    return answer_sum
+    
+answer(solve)

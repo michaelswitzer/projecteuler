@@ -10,9 +10,14 @@
 # 
 # d1 * d10 * d100 * d1000 * d10000 * d100000 * d1000000
 
-decimals = "1"
+from common_funcs import answer
 
-for x in range(2,200000):
-    decimals = decimals + str(x)
+def solve():
+    decimals = "1"
+
+    for x in range(2,200000):
+        decimals = decimals + str(x)
     
-print int(decimals[0]) * int(decimals[9]) * int(decimals[99]) * int(decimals[999]) * int(decimals[9999]) * int(decimals[99999]) * int(decimals[999999])
+    return int(decimals[0]) * int(decimals[9]) * int(decimals[99]) * int(decimals[999]) * int(decimals[9999]) * int(decimals[99999]) * int(decimals[999999])
+    
+answer(solve)

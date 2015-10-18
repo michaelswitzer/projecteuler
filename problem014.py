@@ -17,29 +17,30 @@
 # NOTE: Once the chain starts the terms are allowed to go above one
 # million.
 
-def isEven(n):
+from common_funcs import answer
+
+def is_even(n):
     if n % 2 == 0:
         return True
     return False
-    
-print "10 is even: ", isEven(10)
 
-def sequenceLength(n):
+def seq_length(n):
     steps = 0
     while n != 1:
-        if isEven(n):
+        if is_even(n):
             n = n / 2
         else:
             n = 3 * n + 1
         steps = steps + 1
     return steps
-        
-print "Steps starting from n = 13: ", sequenceLength(10)
 
-
-greatest = 0
-for n in range(1,1000000):
-    seq_len = sequenceLength(n)
-    if seq_len > greatest:
-        greatest = seq_len
-        print n, greatest
+def solve():
+    greatest = 0
+    for n in range(1,1000000):
+        seq_l = seq_length(n)
+        if seq_l > greatest:
+            greatest = seq_l
+            greatest_n = n
+    return greatest_n
+    
+answer(solve)

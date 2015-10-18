@@ -13,6 +13,8 @@
 
 import fractions
 
+from common_funcs import answer
+
 # tell if fraction is curious
 # only supports 2 digits in num, den
 def curious(n,d):
@@ -29,16 +31,17 @@ def curious(n,d):
     except ZeroDivisionError:
         pass
     return False
-    
-num_prod = 1
-den_prod = 1
-for num in range(10,100):
-    for den in range(10,100):
-        if curious(num,den):
-            num_prod *= num
-            den_prod *= den
-            print num, " / ", den
+
+def solve():   
+    num_prod = 1
+    den_prod = 1
+    for num in range(10,100):
+        for den in range(10,100):
+            if curious(num,den):
+                num_prod *= num
+                den_prod *= den
             
-print "unreduced fraction: ", num_prod, " / ", den_prod
-answer = fractions.Fraction(num_prod,den_prod)
-print "reduced fraction: ", answer 
+    print "Unreduced fraction: ", num_prod, " / ", den_prod
+    return fractions.Fraction(num_prod,den_prod).denominator
+
+answer(solve)

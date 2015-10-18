@@ -8,20 +8,7 @@
 # 
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
-#naive primality test from wikipedia
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n <=3:
-        return True
-    elif (n % 2 == 0 or n % 3 == 0):
-        return False
-    i = 5
-    while i*i <= n:
-        if (n % i == 0 or n % (i+2) == 0):
-            return False
-        i = i + 6
-    return True
+from common_funcs import answer, is_prime
     
 def truncatable(n):
     left = str(n)
@@ -36,14 +23,16 @@ def truncatable(n):
         right = right[:-1]
     return True
 
-truncatable_primes = []
+def solve():
+    truncatable_primes = []
 
-guess = 10
-while len(truncatable_primes) < 11:
-    if truncatable(guess):
-        truncatable_primes.append(guess)
-        print(truncatable_primes)  
-    guess += 1 
+    guess = 10
+    while len(truncatable_primes) < 11:
+        if truncatable(guess):
+            truncatable_primes.append(guess) 
+        guess += 1 
     
-print(sum(truncatable_primes))
+    return sum(truncatable_primes)
+    
+answer(solve)
 

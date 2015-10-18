@@ -17,21 +17,10 @@
 # Find the sum of all the positive integers which cannot be written as the
 # sum of two abundant numbers.
 
-import math
-
-# from http://stackoverflow.com/questions/171765/what-is-the-best-way-to-get-all-the-divisors-of-a-number
-def divisorGenerator(n):
-    large_divisors = []
-    for i in xrange(1, int(math.sqrt(n) + 1)):
-        if n % i is 0:
-            yield i
-            if i is not n / i:
-                large_divisors.insert(0, n / i)
-    for divisor in large_divisors[:-1]: # modified to not include number itself as a divisor
-        yield divisor
+from common_funcs import answer, div_gen
 
 def isAbundant(n):
-    if sum(divisorGenerator(n)) > n:
+    if sum(list(div_gen(n))[:-1]) > n:
         return True
     return False
     
@@ -62,17 +51,18 @@ def SumOfTwoGenerator(listOfNums):
     return sorted(list(set(sumsOfTwo)))
       
     
-# solve problem    
-print("generating abundants...") 
-abundants = abundantGenerator(12,28123)
+def solve():  
+    print("Generating abundants...") 
+    abundants = abundantGenerator(12,28123)
 
-print("generating possible sums...")
-Sums = SumOfTwoGenerator(abundants)
+    print("Generating possible sums...")
+    Sums = SumOfTwoGenerator(abundants)
 
-print("calculating answer")
-total = 0
-for x in range(1,28123):
-    if x not in Sums:
-        total = total + x
+    print("Calculating answer...")
+    total = 0
+    for x in range(1,28123):
+        if x not in Sums:
+            total = total + x
+    return total
 
-print(total)
+answer(solve)

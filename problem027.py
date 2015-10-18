@@ -20,31 +20,19 @@
 # expression that produces the maximum number of primes for consecutive
 # values of n, starting with n = 0.
 
-#naive primality test from wikipedia
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n <=3:
-        return True
-    elif (n % 2 == 0 or n % 3 == 0):
-        return False
-    i = 5
-    while i*i <= n:
-        if (n % i == 0 or n % (i+2) == 0):
-            return False
-        i = i + 6
-    return True
-    
-    
-greatest = 0
-for a in range(-1000,1000):
-    for b in range(-1000,1000):
-        n = 0
-        while(is_prime(n**2 + a*n + b)):
-            n = n + 1
-        if n > greatest:
-            greatest = n
-            best_a = a
-            best_b = b
+from common_funcs import answer, is_prime
+
+def solve():
+    greatest = 0
+    for a in range(-1000,1000):
+        for b in range(-1000,1000):
+            n = 0
+            while(is_prime(n**2 + a*n + b)):
+                n = n + 1
+            if n > greatest:
+                greatest = n
+                best_a = a
+                best_b = b
+    return best_a * best_b
             
-print(best_a * best_b, greatest)
+answer(solve)

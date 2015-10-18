@@ -7,15 +7,10 @@
 
 import math
 
-# from wikipedia https://en.wikipedia.org/wiki/Digit_sum
+from common_funcs import answer, sum_digits
 
-num = math.factorial(100)
+def solve():
+    num = math.factorial(100)
+    return sum_digits(num)
 
-def sum_digits(num):
-    total = 0
-    max = int(math.floor(math.log10(num)))
-    for n in range(0,max+1):
-        total = total + (((num) % 10**(n+1)) - ((num) % 10**n)) / (10**n)
-    return total
-
-print(sum_digits(num))
+answer(solve)

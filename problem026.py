@@ -20,6 +20,8 @@
 from decimal import *
 from collections import Counter
 
+from common_funcs import answer
+
 def unitFraction(n):
     return str(Decimal(1) / Decimal(n))
     
@@ -40,19 +42,14 @@ def findCycle(n, d):
             if a[i:j] == a[j:j+len(a[i:j])] and a[i:j] == a[j+len(a[i:j]):j+2*len(a[i:j])]: #really messy but this means repeated 3 times
                 return a[i:j]
     return []
-    
-# give example
-for x in range(2,10):
-    a = findCycle(1,x)
-    print x, a    
 
-# solve problem
-biggest = []
-for x in range(2,1000):
-    a = findCycle(1,x)
-    if len(biggest) < len(a):
-        biggest = a
-        print x
-print x, biggest
+def solve():
+    biggest = []
+    for x in range(2,1000):
+        a = findCycle(1,x)
+        if len(biggest) < len(a):
+            biggest = a
+            best_index = x
+    return best_index
         
-    
+answer(solve)

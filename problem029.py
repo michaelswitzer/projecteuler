@@ -13,39 +13,28 @@
 import math
 import itertools
 
-# http://stackoverflow.com/questions/15347174/python-finding-prime-factors
-def prime_factors(n):
-    i = 2
-    factors = []
-    while i * i <= n:
-        if n % i:
-            i += 1
-        else:
-            n //= i
-            factors.append(i)
-    if n > 1:
-        factors.append(n)
-    return factors
-    
-    
-    
+from common_funcs import answer, prime_expansion  
+
 def exponent_gen(a,b):
     exps = []
-    pf_a = prime_factors(a)
+    pf_a = prime_expansion(a)
     
     for x in pf_a:
         x_count = pf_a.count(x)
         exps.append([x, x_count * b])
         
-    exps = list(exps for exps,_ in itertools.groupby(exps)) # use itertools to remove dupes: http://stackoverflow.com/questions/2213923/python-removing-duplicates-from-a-list-of-lists
+    # http://stackoverflow.com/questions/2213923/python-removing-duplicates-from-a-list-of-lists
+    exps = list(exps for exps,_ in itertools.groupby(exps)) 
     return exps
-        
-unique_terms = []
-for a in range(2,101):
-    for b in range(2,101):
-        exps = exponent_gen(a,b)
-        if exps not in unique_terms:
-            unique_terms.append(exps)
-
-print(len(unique_terms))
+ 
+def solve():       
+    unique_terms = []
+    for a in range(2,101):
+        for b in range(2,101):
+            exps = exponent_gen(a,b)
+            if exps not in unique_terms:
+                unique_terms.append(exps)
+    return len(unique_terms)
+            
+answer(solve)
     

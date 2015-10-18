@@ -3,6 +3,8 @@
 
 #Find the sum of all the multiples of 3 or 5 below 1000.
 
+from common_funcs import answer
+
 def multiples_below(below, m1, m2):
     total = 0
     for x in range(0,below):
@@ -10,4 +12,7 @@ def multiples_below(below, m1, m2):
             total = total + x  
     return(total)
     
-print(multiples_below(1000,3,5))
+def solve():
+    return multiples_below(1000,3,5)
+
+answer(solve)

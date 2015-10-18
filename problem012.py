@@ -19,45 +19,22 @@
 # What is the value of the first triangle number to have over five hundred
 # divisors?
 
-#method 2: find primes and spaces within them and count triangle numbers
-
-#filter triangle numbers
-
-#method 1: check all nums
-
-import time
 import math
 
-# O(1)
-def triangleNum(n):
-    Tn = (n * (n + 1)) / 2 # From Wikipedia
-    return Tn
+from common_funcs import answer, div_gen, tri_num
+ 
+def solve():
+    n = 1
+    max = 500
 
-# from http://stackoverflow.com/questions/171765/what-is-the-best-way-to-get-all-the-divisors-of-a-number
-# his comments make me feel better for looking this up. I promise I learned a lot.
-def divisorGenerator(n):
-    large_divisors = []
-    for i in xrange(1, int(math.sqrt(n) + 1)):
-        if n % i is 0:
-            yield i
-            if i is not n / i:
-                large_divisors.insert(0, n / i)
-    for divisor in large_divisors:
-        yield divisor
+    while(True):
+        t = tri_num(n)
+        num_divisors = len(list(div_gen(t)))
     
-n = 1
-max = 500
+        if num_divisors > max:
+            break
 
-start = time.time()
-
-while(True):
-    t = triangleNum(n)
-    num_divisors = len(list(divisorGenerator(t)))
-
-    print n, t, num_divisors
-    
-    if num_divisors > max:
-        print "Speed: ", time.time() - start, "Seconds"
-        break
-
-    n = n + 1
+        n = n + 1
+    return t
+  
+answer(solve)

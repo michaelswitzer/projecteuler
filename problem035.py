@@ -6,6 +6,8 @@
 # 
 # How many circular primes are there below one million?
 
+from common_funcs import answer, is_prime
+
 # returns all rotations of n
 def rotations(n):
     rotate = []
@@ -16,30 +18,17 @@ def rotations(n):
         digits.insert(0,temp)
     return rotate
     
-#naive primality test from wikipedia
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n <=3:
-        return True
-    elif (n % 2 == 0 or n % 3 == 0):
-        return False
-    i = 5
-    while i*i <= n:
-        if (n % i == 0 or n % (i+2) == 0):
-            return False
-        i = i + 6
-    return True
-    
 def all_rotations_prime(n):
     for x in rotations(n):
         if not is_prime(x):
             return False
     return True
+ 
+def solve():   
+    count = 1
+    for x in range(3,1000000,2):
+        if all_rotations_prime(x):
+            count += 1
+    return count
     
-count = 0
-for x in range(2,1000000):
-    if all_rotations_prime(x):
-        count += 1
-    
-print(count)
+answer(solve)

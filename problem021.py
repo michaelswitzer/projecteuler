@@ -9,21 +9,10 @@
 # 
 # Evaluate the sum of all the amicable numbers under 10000.
 
-import math
-
-# from http://stackoverflow.com/questions/171765/what-is-the-best-way-to-get-all-the-divisors-of-a-number
-def divisorGenerator(n):
-    large_divisors = []
-    for i in xrange(1, int(math.sqrt(n) + 1)):
-        if n % i is 0:
-            yield i
-            if i is not n / i:
-                large_divisors.insert(0, n / i)
-    for divisor in large_divisors[:-1]: # modified to not include number itself as a divisor
-        yield divisor
+from common_funcs import answer, div_gen
         
 def d(n):
-    return sum(list(divisorGenerator(n)))
+    return sum(list(div_gen(n))[:-1]) #slice to not include number itself
     
 # generate all amicable nums under n
 def amicableGenerator(n):
@@ -36,4 +25,7 @@ def amicableGenerator(n):
             ami.append(b)
     return list(set(ami)) # remove duplicates
     
-print(sum(amicableGenerator(10000)))
+def solve():
+    return sum(amicableGenerator(10000))
+    
+answer(solve)

@@ -14,6 +14,7 @@
 
 # 1 2 2 2 2 4 4 4 4 6 6 6 6
 
+from common_funcs import answer
 
 # for spiral of size n, return sum of diagonals
 # for the problem it will be spiralSum(1001**2)
@@ -34,6 +35,7 @@ def spiralSum(n):
 
     return sum
     
-print(spiralSum(25))
+def solve():
+    return spiralSum(1001**2)
 
-print(spiralSum(1001**2))
+answer(solve)

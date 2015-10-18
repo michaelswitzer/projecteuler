@@ -15,30 +15,19 @@
 # as the concatenated product of an integer with (1,2, ... , n) where n >
 # 1?
 
-class We_Won(Exception): pass
+from common_funcs import answer, is_pandigital  
 
-def is_pandigital(n):
-    digits = [int(x) for x in list(str(n))]
-    for x in range(1,10):
-        if x in digits:
-            digits.remove(x)
-        else:
-            return False
-    if digits == []:
-        return True
-        
-guess = 50000 #definite maximum
-
-try:
+def solve():
+    guess = 50000 #definite maximum
     while True:
         check_this = int(str(guess) + str(2*guess)) # base case
         n = 3
         while check_this <= 987654321:
-            if is_pandigital(check_this):
-                print "answer: ",check_this
-                raise We_Won
+            if is_pandigital(check_this, 9):
+                return check_this
             check_this = int(str(check_this) + str(n*guess))
             n += 1
         guess -= 1
-except We_Won:
-    pass
+
+
+answer(solve)

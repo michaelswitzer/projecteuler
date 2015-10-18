@@ -7,25 +7,24 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-# MIKENOTE: Fibonacci pattern is (starting from 2) even odd odd even odd odd...
+from common_funcs import answer
 
-total = 0
-counter = 0 #counts number of steps to predict even numbers
+def solve():
+    # Fibonacci pattern is (starting from 2) even odd odd even odd odd...
+    total = 0
+    counter = 0 #counts number of steps to predict even numbers
 
-max = 4000000
+    max = 4000000
 
-fibs = [1, 2]
+    fibs = [1, 2]
+    while(fibs[1] <= max):
+        if (counter % 3 == 0):
+            total = total + fibs[1]
 
-while(fibs[1] <= max):
-    if (counter % 3 == 0):
-        total = total + fibs[1]
+        counter = counter + 1
+        placeholder = fibs[0] + fibs[1]
+        fibs[0] = fibs[1]
+        fibs[1] = placeholder
+    return total
 
-    counter = counter + 1
-    placeholder = fibs[0] + fibs[1]
-    fibs[0] = fibs[1]
-    fibs[1] = placeholder
-
-
-print(counter)
-print(fibs)
-print(total)
+answer(solve)

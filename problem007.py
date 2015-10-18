@@ -3,27 +3,16 @@
 # 
 # What is the 10 001st prime number?
 
-#naive primality test from wikipedia
-def is_prime(n):
-    if n <= 1:
-        return False
-    elif n <=3:
-        return True
-    elif (n % 2 == 0 or n % 3 == 0):
-        return False
-    i = 5
-    while i*i <= n:
-        if (n % i == 0 or n % (i+2) == 0):
-            return False
-        i = i + 6
-    return True
-    
-    
-counter = 1
-nat = 1
+from common_funcs import answer, is_prime
+      
+def solve():
+    counter = 1
+    nat = 1
 
-while(counter < 10001):
-    nat = nat + 2
-    if is_prime(nat):
-        print("Prime: ",nat)
-        counter = counter + 1
+    while(counter < 10001):
+        nat = nat + 2
+        if is_prime(nat):
+            counter = counter + 1
+    return nat
+
+answer(solve)

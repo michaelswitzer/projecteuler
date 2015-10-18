@@ -11,9 +11,9 @@
 
 import string
 
+from common_funcs import answer
+
 # https://en.wikipedia.org/wiki/Permutation#Generation_in_lexicographic_order 
-# i only consulted wikipedia because
-# the problem didn't really explain what lexicographic order is
 def iterate_lex(a):
     index1 = []
     index2 = []
@@ -41,14 +41,15 @@ def iterate_lex(a):
         
     return a
 
-# solve problem
-digits_list = [int(x) for x in list(string.digits)]
+def solve():
+    digits_list = [int(x) for x in list(string.digits)]
 
-for _ in range(999999):
-    digits_list = iterate_lex(digits_list)
-    print(digits_list)
+    for _ in range(999999):
+        digits_list = iterate_lex(digits_list)
 
-answer = 0
-for x in range(10):
-    answer = answer + (10**(9-x))*digits_list[x]
-print(answer)
+    ans = 0
+    for x in range(10):
+        ans = ans + (10**(9-x))*digits_list[x]
+    return ans
+        
+answer(solve)

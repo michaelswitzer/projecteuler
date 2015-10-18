@@ -10,6 +10,8 @@
 # Find the difference between the sum of the squares of the first one
 # hundred natural numbers and the square of the sum.
 
+from common_funcs import answer
+
 def sum_squares(n):
     ans = 0
     for x in range(1,n+1):
@@ -23,12 +25,10 @@ def squared_sum(n):
         ans = ans + x
     return ans**2
     
-    
-interested_in = 100
+def solve():
+    interested_in = 100
 
-print("Sum of squares: ", sum_squares(interested_in))
-print("Square of sum: ", squared_sum(interested_in))
-
-diff = squared_sum(interested_in) - sum_squares(interested_in)
+    diff = squared_sum(interested_in) - sum_squares(interested_in)
+    return diff
     
-print("Difference: ", diff)
+answer(solve)

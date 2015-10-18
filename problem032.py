@@ -12,26 +12,22 @@
 # HINT: Some products can be obtained in more than one way so be sure to
 # only include it once in your sum.
 
+from common_funcs import answer, is_pandigital
+
 def product_pandigital(a,b):
     c = a * b
     digits = [int(x) for x in list(str(a)) + list(str(b)) + list(str(c))]
-    for x in range(1,10):
-        if x in digits:
-            digits.remove(x)
-        else:
-            return False
-    if digits == []:
+    digits = int(''.join(map(str, digits)))
+    if is_pandigital(digits, 9):
         return True
     return False
-    
-# tests
-print(product_pandigital(39,186))
-print(product_pandigital(39,187))
 
-products = []
-for a in range(1,500): #total guess
-    for b in range(1,5000):
-        if product_pandigital(a,b) and a*b not in products:
-            products.append(a*b)
+def solve():
+    products = []
+    for a in range(1,500): #total guess
+        for b in range(1,5000):
+            if product_pandigital(a,b) and a*b not in products:
+                products.append(a*b)
+    return sum(products)
 
-print(sum(products))
+answer(solve)

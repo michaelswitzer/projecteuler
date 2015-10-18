@@ -11,8 +11,12 @@
 # Find the sum of all the numbers that can be written as the sum of fifth
 # powers of their digits.
 
+import time
+
+from common_funcs import answer
+
 # checks if sum of digits of p to the power of n are equal to p
-def digitChecker(p,n):
+def digit_checker(p,n):
     list_digits = [int(x) for x in list(str(p))]
     total = 0
     for x in list_digits:
@@ -22,15 +26,20 @@ def digitChecker(p,n):
     else:
         return False
 
-total = 0
-check = 11
+def solve():
+    begin_time = time.time()
 
-# this is incredibly lazy; I assume there's a proof that shows the
-# maximum number. I am just banking on brute force being computationally
-# feasible.
-while True:
-    if digitChecker(check,5):
-        print(check)
-        total += check
-        print(total)
-    check += 1
+    total = 0
+    check = 11
+
+    # this is incredibly lazy; I assume there's a proof that shows the
+    # maximum number. I am just banking on getting to the best answer
+    # within 2 seconds.
+    while time.time()-begin_time < 2:
+        if digit_checker(check,5):
+            total += check
+        check += 1
+        
+    return total
+    
+answer(solve)
