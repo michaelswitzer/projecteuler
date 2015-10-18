@@ -72,52 +72,39 @@ def is_palindrome(n):
 def triangle(n):
     return (n * (n + 1)) / 2
     
-def triangular(n):
-    counter = 1
-    while True:
-        pent = pentagon(counter)
-        if pent == n:
-            return True
-            break
-        if pent > n:
-            return False 
-            break
-        counter += 1
+def triangular(Tn):
+    # Tn inverse for positive n = (-1 + sqrt(8 * Tn + 1)) / 2
+    Tn = float(Tn)
+    if (-1 + math.sqrt(8 * Tn + 1) / 2).is_integer():
+        return True
+    return False
 
 ### PENTAGON NUMS ###
 
 def pentagon(n):
     return n*(3*n-1)/2
     
-def pentagonal(n):
-    counter = 1
-    while True:
-        pent = pentagon(counter)
-        if pent == n:
-            return True
-            break
-        if pent > n:
-            return False 
-            break
-        counter += 1
+def pentagonal(Pn):
+    # Pn inverse = (sqrt(24 * Pn + 1) + 1) / 6
+    Pn = float(Pn)
+    if ((math.sqrt(24 * Pn + 1) + 1) / 6).is_integer():
+        return True
+    return False
+    
 
 ### HEXAGON NUMS ###
 
 def hexagon(n):
     return n*(2*n-1)
     
-def hexagonal(n):
-    counter = 1
-    while True:
-        pent = hexagon(counter)
-        if pent == n:
-            return True
-            break
-        if pent > n:
-            return False 
-            break
-        counter += 1
-
+def hexagonal(Hn):
+    # Hn inverse for positive n = (1 + sqrt(8 * Hn + 1)) / 4
+    Hn = float(Hn)
+    if ((1 + math.sqrt(8 * Hn + 1)) / 4).is_integer():
+        return True
+    return False
+    
+    
 ### DIVISORS ###
 
 # http://stackoverflow.com/questions/171765/what-is-the-best-way-to-get-all-the-divisors-of-a-number
