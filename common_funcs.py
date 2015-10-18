@@ -3,6 +3,7 @@
 
 import math
 import time
+from itertools import permutations
 
 ### RETURNING AN ANSWER ###
 
@@ -85,7 +86,12 @@ def div_gen(n):
                 large_divisors.insert(0, n / i)
     for divisor in large_divisors:
         yield divisor
-     
+        
+### PERMUTATIONS ###
+
+# http://stackoverflow.com/questions/104420/how-to-generate-all-permutations-of-a-list-in-python
+def list_perms(n):
+    return [int(''.join(p)) for p in permutations(n)]
         
 ### DIGIT MANIPULATION ###
 
@@ -108,3 +114,5 @@ def is_pandigital(n, length):
             return False
     if digits == []:
         return True
+        
+        
