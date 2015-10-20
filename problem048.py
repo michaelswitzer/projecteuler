@@ -8,11 +8,10 @@ def solve():
     total = 0
     for x in range(1,1001):
         if 1 <= x <= 10:
-            total += int(str(x**x)[-x:])
+            total += int(str(x**x)[-x:]) #avoid index error
         else:   
-            total += int(str(x**x)[-10:])
+            total += int(str(x**x)[-10:]) #these are the digits we care about right???
             
     return int(str(total)[-10:])
-    
     
 answer(solve)

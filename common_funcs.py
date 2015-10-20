@@ -50,6 +50,13 @@ def prime_expansion(n):
 def prime_factors(n):
     return list(set(prime_expansion(n)))
     
+def primes_less_than(n):
+    primes = []
+    for i in range(2,n):
+        if is_prime(i):
+            primes.append(i)
+    return primes
+    
 
 ### PALINDROMES ###
 
@@ -118,6 +125,15 @@ def div_gen(n):
 # http://stackoverflow.com/questions/104420/how-to-generate-all-permutations-of-a-list-in-python
 def list_perms(n):
     return [int(''.join(p)) for p in permutations(n)]
+    
+# is n a permutation of p?
+def is_permutation(n,p):
+    n_list = sorted(list(str(n)))
+    p_list = sorted(list(str(p)))
+    if n_list == p_list:
+        return True
+    else:
+        return False
         
 ### DIGIT MANIPULATION ###
 
