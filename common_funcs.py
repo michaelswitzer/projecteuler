@@ -32,7 +32,6 @@ def is_prime(n):
         i = i + 6
     return True
 
-    
 # http://stackoverflow.com/questions/15347174/python-finding-prime-factors
 def prime_expansion(n):
     i = 2
@@ -144,6 +143,21 @@ def sum_digits(num):
     for n in range(0,max+1):
         total = total + (((num) % 10**(n+1)) - ((num) % 10**n)) / (10**n)
     return total
+
+# pass in a number and which_ns, a list of booleans in the position
+# order for n's to be replaced, and what integer to replace them with. 
+# replace_digits([1,2,3],[True,False,False],5) = [5,2,3]
+
+def replace_digits(n, which_ns, replacement):
+    pos = 0
+    digits = [int(x) for x in list(str(n))]
+    for x in digits:
+        pos += 1
+        if which_ns[pos] == True:
+            x = replacement
+    
+    return 
+        
     
 ### PANDIGITALS ###
         
