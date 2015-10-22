@@ -60,12 +60,7 @@ def primes_less_than(n):
 ### PALINDROMES ###
 
 def is_palindrome(n):
-    n_str = str(n)
-    n_len = len(n_str)
-    for x in range(0, n_len/2):
-        if(n_str[x] != n_str[-1 - x]):
-            return False
-    return True
+    return str(n) == str(n)[::-1]
     
     
 ### TRIANGLE NUMS ###
@@ -143,6 +138,9 @@ def sum_digits(num):
     for n in range(0,max+1):
         total = total + (((num) % 10**(n+1)) - ((num) % 10**n)) / (10**n)
     return total
+    
+def reverse_digits(n):
+    return int(str(n)[::-1])
 
 # pass in a number and which_ns, a list of booleans in the position
 # order for n's to be replaced, and what integer to replace them with. 
